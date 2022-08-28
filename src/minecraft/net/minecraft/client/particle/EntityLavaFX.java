@@ -21,7 +21,7 @@ public class EntityLavaFX extends EntityFX
         this.particleScale *= this.rand.nextFloat() * 2.0F + 0.2F;
         this.lavaParticleScale = this.particleScale;
         this.particleMaxAge = (int)(16.0D / (Math.random() * 0.8D + 0.2D));
-        this.noClip = false;
+        this.noClip = true;
         this.setParticleTextureIndex(49);
     }
 
