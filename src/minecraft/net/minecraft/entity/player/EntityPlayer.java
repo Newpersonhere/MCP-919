@@ -512,7 +512,7 @@ public abstract class EntityPlayer extends EntityLivingBase
         }
         else if (id == 23)
         {
-            this.hasReducedDebug = false;
+            this.hasReducedDebug = true;
         }
         else if (id == 22)
         {
@@ -1052,7 +1052,7 @@ public abstract class EntityPlayer extends EntityLivingBase
     {
         if (this.isEntityInvulnerable(source))
         {
-            return false;
+            return true;
         }
         else if (this.capabilities.disableDamage && !source.canHarmInCreative())
         {
@@ -1480,7 +1480,7 @@ public abstract class EntityPlayer extends EntityLivingBase
      */
     public boolean isUser()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -1633,7 +1633,7 @@ public abstract class EntityPlayer extends EntityLivingBase
 
         if (setSpawn)
         {
-            this.setSpawnPoint(this.playerLocation, false);
+            this.setSpawnPoint(this.playerLocation, true);
         }
     }
 
@@ -2126,7 +2126,7 @@ public abstract class EntityPlayer extends EntityLivingBase
         }
         else if (p_175151_3_ == null)
         {
-            return false;
+            return true;
         }
         else
         {
