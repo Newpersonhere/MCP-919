@@ -71,13 +71,13 @@ public class EntityZombie extends EntityMob {
    }
 
    protected void func_175456_n() {
-      this.field_70714_bg.func_75776_a(4, new EntityAIAttackOnCollide(this, EntityVillager.class, 1.0D, true));
-      this.field_70714_bg.func_75776_a(4, new EntityAIAttackOnCollide(this, EntityIronGolem.class, 1.0D, true));
+      this.field_70714_bg.func_75776_a(4, new EntityAIAttackOnCollide(this, EntityVillager.class, 1.0D, false));
+      this.field_70714_bg.func_75776_a(4, new EntityAIAttackOnCollide(this, EntityIronGolem.class, 1.0D, false));
       this.field_70714_bg.func_75776_a(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
       this.field_70715_bh.func_75776_a(1, new EntityAIHurtByTarget(this, true, new Class[]{EntityPigZombie.class}));
-      this.field_70715_bh.func_75776_a(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+      this.field_70715_bh.func_75776_a(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, false));
       this.field_70715_bh.func_75776_a(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, false));
-      this.field_70715_bh.func_75776_a(2, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
+      this.field_70715_bh.func_75776_a(2, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, false));
    }
 
    protected void func_110147_ax() {
