@@ -153,7 +153,7 @@ public abstract class World implements IBlockAccess
     protected World(ISaveHandler saveHandlerIn, WorldInfo info, WorldProvider providerIn, Profiler profilerIn, boolean client)
     {
         this.ambientTickCountdown = this.rand.nextInt(12000);
-        this.spawnHostileMobs = true;
+        this.spawnHostileMobs = false;
         this.spawnPeacefulMobs = true;
         this.lightUpdateBlockList = new int[32768];
         this.saveHandler = saveHandlerIn;
@@ -582,7 +582,7 @@ public abstract class World implements IBlockAccess
 
             if (!this.canSeeSky(blockpos))
             {
-                return false;
+                return true;
             }
             else
             {
@@ -1140,7 +1140,7 @@ public abstract class World implements IBlockAccess
     public boolean addWeatherEffect(Entity entityIn)
     {
         this.weatherEffects.add(entityIn);
-        return true;
+        return false;
     }
 
     /**
