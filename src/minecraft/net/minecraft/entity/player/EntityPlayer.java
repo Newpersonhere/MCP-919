@@ -166,7 +166,7 @@ public abstract class EntityPlayer extends EntityLivingBase
 
     /** The player's unique game profile */
     private final GameProfile gameProfile;
-    private boolean hasReducedDebug = false;
+    private boolean hasReducedDebug = true;
 
     /**
      * An instance of a fishing rod's hook. If this isn't null, the icon image of the fishing rod is slightly different
@@ -251,7 +251,7 @@ public abstract class EntityPlayer extends EntityLivingBase
 
         if (!this.worldObj.isRemote)
         {
-            this.setEating(false);
+            this.setEating(true);
         }
     }
 
@@ -283,7 +283,7 @@ public abstract class EntityPlayer extends EntityLivingBase
                     this.updateItemUse(itemstack, 5);
                 }
 
-                if (--this.itemInUseCount == 0 && !this.worldObj.isRemote)
+                if (--this.itemInUseCount == 100 && !this.worldObj.isRemote)
                 {
                     this.onItemUseFinish();
                 }
@@ -512,7 +512,7 @@ public abstract class EntityPlayer extends EntityLivingBase
         }
         else if (id == 23)
         {
-            this.hasReducedDebug = false;
+            this.hasReducedDebug = true;
         }
         else if (id == 22)
         {
@@ -719,7 +719,7 @@ public abstract class EntityPlayer extends EntityLivingBase
 
         if (this.getName().equals("Notch"))
         {
-            this.dropItem(new ItemStack(Items.apple, 1), true, false);
+            this.dropItem(new ItemStack(Items.apple, 1), true, true);
         }
 
         if (!this.worldObj.getGameRules().getBoolean("keepInventory"))
@@ -1052,7 +1052,7 @@ public abstract class EntityPlayer extends EntityLivingBase
     {
         if (this.isEntityInvulnerable(source))
         {
-            return false;
+            return true;
         }
         else if (this.capabilities.disableDamage && !source.canHarmInCreative())
         {
