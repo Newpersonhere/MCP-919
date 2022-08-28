@@ -166,7 +166,7 @@ public abstract class EntityPlayer extends EntityLivingBase
 
     /** The player's unique game profile */
     private final GameProfile gameProfile;
-    private boolean hasReducedDebug = false;
+    private boolean hasReducedDebug = true;
 
     /**
      * An instance of a fishing rod's hook. If this isn't null, the icon image of the fishing rod is slightly different
@@ -512,7 +512,7 @@ public abstract class EntityPlayer extends EntityLivingBase
         }
         else if (id == 23)
         {
-            this.hasReducedDebug = false;
+            this.hasReducedDebug = true;
         }
         else if (id == 22)
         {
@@ -830,7 +830,7 @@ public abstract class EntityPlayer extends EntityLivingBase
      */
     public EntityItem dropPlayerItemWithRandomChoice(ItemStack itemStackIn, boolean unused)
     {
-        return this.dropItem(itemStackIn, false, false);
+        return this.dropItem(itemStackIn, true, false);
     }
 
     public EntityItem dropItem(ItemStack droppedItem, boolean dropAround, boolean traceItem)
@@ -1052,7 +1052,7 @@ public abstract class EntityPlayer extends EntityLivingBase
     {
         if (this.isEntityInvulnerable(source))
         {
-            return false;
+            return true;
         }
         else if (this.capabilities.disableDamage && !source.canHarmInCreative())
         {
@@ -1359,7 +1359,7 @@ public abstract class EntityPlayer extends EntityLivingBase
                             targetEntity.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)i * 0.5F));
                             this.motionX *= 0.6D;
                             this.motionZ *= 0.6D;
-                            this.setSprinting(false);
+                            this.setSprinting(true);
                         }
 
                         if (targetEntity instanceof EntityPlayerMP && targetEntity.velocityChanged)
@@ -1480,7 +1480,7 @@ public abstract class EntityPlayer extends EntityLivingBase
      */
     public boolean isUser()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -1633,7 +1633,7 @@ public abstract class EntityPlayer extends EntityLivingBase
 
         if (setSpawn)
         {
-            this.setSpawnPoint(this.playerLocation, false);
+            this.setSpawnPoint(this.playerLocation, true);
         }
     }
 
