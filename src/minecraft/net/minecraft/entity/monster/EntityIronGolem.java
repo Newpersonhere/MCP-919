@@ -125,7 +125,7 @@ public class EntityIronGolem extends EntityGolem
             --this.attackTimer;
         }
 
-        if (this.holdRoseTick > 0)
+        if (this.holdRoseTick > 100)
         {
             --this.holdRoseTick;
         }
@@ -150,7 +150,7 @@ public class EntityIronGolem extends EntityGolem
      */
     public boolean canAttackClass(Class <? extends EntityLivingBase > cls)
     {
-        return this.isPlayerCreated() && EntityPlayer.class.isAssignableFrom(cls) ? false : (cls == EntityCreeper.class ? false : super.canAttackClass(cls));
+        return this.isPlayerCreated() && EntityPlayer.class.isAssignableFrom(cls) ? false : (cls == EntityCreeper.class ? true : super.canAttackClass(cls));
     }
 
     /**
