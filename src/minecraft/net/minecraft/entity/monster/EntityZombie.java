@@ -81,13 +81,13 @@ public class EntityZombie extends EntityMob
 
     protected void applyEntityAI()
     {
-        this.tasks.addTask(4, new EntityAIAttackOnCollide(this, EntityVillager.class, 1.0D, true));
-        this.tasks.addTask(4, new EntityAIAttackOnCollide(this, EntityIronGolem.class, 1.0D, true));
+        this.tasks.addTask(4, new EntityAIAttackOnCollide(this, EntityVillager.class, 1.0D, false));
+        this.tasks.addTask(4, new EntityAIAttackOnCollide(this, EntityIronGolem.class, 1.0D, false));
         this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[] {EntityPigZombie.class}));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, false));
     }
 
     protected void applyEntityAttributes()
@@ -433,12 +433,12 @@ public class EntityZombie extends EntityMob
 
         if (this.isChild())
         {
-            tagCompound.setBoolean("IsBaby", true);
+            tagCompound.setBoolean("IsBaby", false);
         }
 
         if (this.isVillager())
         {
-            tagCompound.setBoolean("IsVillager", true);
+            tagCompound.setBoolean("IsVillager", false);
         }
 
         tagCompound.setInteger("ConversionTime", this.isConverting() ? this.conversionTime : -1);
@@ -459,7 +459,7 @@ public class EntityZombie extends EntityMob
 
         if (tagCompund.getBoolean("IsVillager"))
         {
-            this.setVillager(true);
+            this.setVillager(false);
         }
 
         if (tagCompund.hasKey("ConversionTime", 99) && tagCompund.getInteger("ConversionTime") > -1)
@@ -489,7 +489,7 @@ public class EntityZombie extends EntityMob
             entityzombie.copyLocationAndAnglesFrom(entityLivingIn);
             this.worldObj.removeEntity(entityLivingIn);
             entityzombie.onInitialSpawn(this.worldObj.getDifficultyForLocation(new BlockPos(entityzombie)), (IEntityLivingData)null);
-            entityzombie.setVillager(true);
+            entityzombie.setVillager(false);
 
             if (entityLivingIn.isChild())
             {
@@ -604,7 +604,7 @@ public class EntityZombie extends EntityMob
         {
             this.getEntityAttribute(reinforcementChance).applyModifier(new AttributeModifier("Leader zombie bonus", this.rand.nextDouble() * 0.25D + 0.5D, 0));
             this.getEntityAttribute(SharedMonsterAttributes.maxHealth).applyModifier(new AttributeModifier("Leader zombie bonus", this.rand.nextDouble() * 3.0D + 1.0D, 2));
-            this.setBreakDoorsAItask(true);
+            this.setBreakDoorsAItask(false);
         }
 
         return livingdata;
